@@ -1,0 +1,24 @@
+<!-- withdraw.html -->
+
+
+{% block content %}
+<h2>Withdraw Funds</h2>
+<p> mpesa withdrawals </p>
+<p> processing time <24 hours</p>
+
+<p>Current Account Balance: Ksh{{ account.balance }}</p>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Withdraw</button>
+</form>
+
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
